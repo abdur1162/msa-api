@@ -52,24 +52,19 @@ INSTALLED_APPS = [
     'invoice',
 ]
 
-# Django Rest Framework Authentication
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    
+    # Pagination Settings
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',  
+    'PAGE_SIZE': 10,  # Change this to the number of items per page
 }
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework.authentication.TokenAuthentication',
-#         'rest_framework.authentication.SessionAuthentication',
-#     ],
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.IsAuthenticated',
-#     ]
-# }
 
-# This is studecademy api v2
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -79,11 +74,6 @@ SIMPLE_JWT = {
     'USER_ID_FIELD' : 'id',
 }
 
-# JWT Authentication settings
-# SIMPLE_JWT = {
-#     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
-#     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
-# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
